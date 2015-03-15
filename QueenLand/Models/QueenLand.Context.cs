@@ -26,7 +26,6 @@ namespace QueenLand.Models
         }
     
         public DbSet<projectitem> projectitems { get; set; }
-        public DbSet<project> projects { get; set; }
         public DbSet<slide> slides { get; set; }
         public DbSet<user> users { get; set; }
         public DbSet<about> abouts { get; set; }
@@ -35,5 +34,6 @@ namespace QueenLand.Models
         public DbSet<projectcontent> projectcontents { get; set; }
         public DbSet<job> jobs { get; set; }
         public DbSet<address> addresses { get; set; }
+        public DbSet<project> projects { get; set; }
     }
 }

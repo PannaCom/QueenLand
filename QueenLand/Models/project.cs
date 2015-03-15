@@ -17,5 +17,6 @@ namespace QueenLand.Models
         public int id { get; set; }
         public string name { get; set; }
         public string image { get; set; }
+        public Nullable<int> no { get; set; }
     }
 }

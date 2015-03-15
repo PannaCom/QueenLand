@@ -90,6 +90,7 @@
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="nvarchar" MaxLength="250" />
           <Property Name="image" Type="nvarchar" MaxLength="150" />
+          <Property Name="no" Type="int" />
         </EntityType>
         <EntityType Name="slide">
           <Key>
@@ -114,7 +115,6 @@
       <Schema Namespace="queenlandModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="queenlandEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="projectitems" EntityType="queenlandModel.projectitem" />
-          <EntitySet Name="projects" EntityType="queenlandModel.project" />
           <EntitySet Name="slides" EntityType="queenlandModel.slide" />
           <EntitySet Name="users" EntityType="queenlandModel.user" />
           <EntitySet Name="abouts" EntityType="queenlandModel.about" />
@@ -123,6 +123,7 @@
           <EntitySet Name="projectcontents" EntityType="queenlandModel.projectcontent" />
           <EntitySet Name="jobs" EntityType="queenlandModel.job" />
           <EntitySet Name="addresses" EntityType="queenlandModel.address" />
+          <EntitySet Name="projects" EntityType="queenlandModel.project" />
           </EntityContainer>
         <EntityType Name="projectitem">
           <Key>
@@ -131,14 +132,6 @@
           <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="projectid" Type="Int32" />
           <Property Name="itemname" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="project">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
-          <Property Name="image" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="slide">
           <Key>
@@ -215,6 +208,15 @@
           <Property Type="Double" Name="lon" />
           <Property Type="Double" Name="lat" />
         </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="image" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="no" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -227,15 +229,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="projectid" ColumnName="projectid" />
                 <ScalarProperty Name="itemname" ColumnName="itemname" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="projects">
-            <EntityTypeMapping TypeName="queenlandModel.project">
-              <MappingFragment StoreEntitySet="projects">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="image" ColumnName="image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -318,6 +311,16 @@
                 <ScalarProperty Name="addressmap" ColumnName="addressmap" />
                 <ScalarProperty Name="addresscontent" ColumnName="addresscontent" />
                 <ScalarProperty Name="hotline" ColumnName="hotline" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projects">
+            <EntityTypeMapping TypeName="queenlandModel.project">
+              <MappingFragment StoreEntitySet="projects">
+                <ScalarProperty Name="no" ColumnName="no" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
