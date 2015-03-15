@@ -1,0 +1,55 @@
+﻿@model QueenLand.Models.address
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>address</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotline)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotline)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.addresscontent)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.addresscontent)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.addressmap)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.addressmap)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lon)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lat)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

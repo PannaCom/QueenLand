@@ -1,0 +1,18 @@
+﻿@model QueenLand.Models.project
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa dự án</h2>
+
+<h3>Bạn có chắc chắn xóa dự án @Model.name này không?</h3>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

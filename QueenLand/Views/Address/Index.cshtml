@@ -1,0 +1,45 @@
+﻿@model IEnumerable<QueenLand.Models.address>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>HotLine và Địa chỉ công ty</h2>
+@Html.ActionLink("Sửa", "Edit", new { id=0}) 
+
+<table width="100%">
+    <tr>
+        <th>
+           Hotline
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Địa chỉ GoogleMap
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw(@item.hotline)
+        </td>
+        <td>
+             @Html.Raw(@item.addresscontent)
+        </td>
+        <td>
+             @Html.Raw(@item.addressmap)
+        </td>
+       
+        <td>
+            
+           
+        </td>
+    </tr>
+}
+
+</table>

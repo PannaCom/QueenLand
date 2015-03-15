@@ -1,0 +1,51 @@
+﻿@model QueenLand.Models.address
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>address</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.hotline)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.hotline)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.addresscontent)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.addresscontent)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.addressmap)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.addressmap)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lon)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lon)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.lat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.lat)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

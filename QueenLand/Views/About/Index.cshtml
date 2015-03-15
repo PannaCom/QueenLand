@@ -1,0 +1,22 @@
+﻿@model IEnumerable<QueenLand.Models.about>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Giới thiệu QueenLand</h2>
+@Html.ActionLink("Sửa", "Edit", new { id=0 }) 
+<table width="100%">
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw(@item.fullcontent)
+        </td>
+        <td>
+            
+           
+        </td>
+    </tr>
+}
+</table>

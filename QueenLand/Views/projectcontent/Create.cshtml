@@ -1,0 +1,221 @@
+﻿@model QueenLand.Models.projectcontent
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Thêm mới nội dung dự án</h2>
+
+<script src="/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm("Create", "projectcontent", FormMethod.Post, new { id = "EditForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Tiêu đề bài viết</label>
+                <input name="title" type="text" id="title" value="" class="form-control" placeholder="Gõ tiêu đề" onchange="urlSeo();"/>                
+              </div>
+         </div>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Tóm tắt</label>
+                 <textarea name="des" id="des" rows="4" cols="80" maxlength="250"></textarea>               
+              </div>
+         </div>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Thuộc dự án</label>                
+                <select class="form-control" name="projectid" id="projectid" onchange="getListProjectItem(this.value);">
+
+                </select>
+              </div>
+        </div>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Dự án menu</label>                
+                <select class="form-control" name="itemid" id="itemid">
+
+                </select>
+              </div>
+        </div>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">List ảnh bài viết</label>
+                  <div id="imageShowContent" style="width:auto;height:auto;"></div>
+              </div>
+         </div>
+        
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Chèn ảnh vào bài viết</label>
+                <input name="imageFileContent" type="file" id="imageFileContent" value="" multiple="multiple" class="form-control" runat="server" onchange="uploadProcessContent();"/>                                
+                <div id="progressbarContent" class="progressbar">
+                    <div id="progresslabelContent" class="progressbarlabel"></div>
+                 </div>  
+              </div>
+         </div> 
+        
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Nội dung</label>                
+                 <textarea name="fullcontent" id="fullcontent" rows="40" cols="80">
+                     Gõ nội dung ở đây
+                </textarea>
+                <script>
+                    CKEDITOR.replace('fullcontent');
+                </script>                       
+              </div>
+        </div>
+                      
+    </fieldset>
+}
+<p>
+    <button type="button" class="btn btn-info" onclick="checkField();">Thêm mới</button>
+</p>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div id="loadingImage" name="loadingImage" style="z-index:1000;position:fixed;left:40%;top:30%;width:32px;height:32px;display:none;">
+    <img src="/Images/loading.gif">
+</div>
+<script>
+    
+    //Image upload
+    function uploadProcessContent() {
+        var title = unicodeToNoMark($("#title").val());
+        if (title.trim() == "") {
+            alert("Nhập tên bài viết trước");
+            document.getElementById("title").focus();
+            document.getElementById('imageFileContent').value = "";
+            return;
+        }
+        var formdata = new FormData(); //FormData object
+        var fileInput = document.getElementById('imageFileContent');
+        for (i = 0; i < fileInput.files.length; i++) {
+            //Appending each file to FormData object
+            formdata.append(fileInput.files[i].name, fileInput.files[i]);
+            //break;
+        }
+        formdata.append("filename", title);
+        showLoadingImage();
+        var xhr = new XMLHttpRequest();
+        xhr.upload.addEventListener("progress", function (evt) {
+            if (evt.lengthComputable) {
+                var progress = Math.round(evt.loaded * 100 / evt.total);
+                $("#progressbarContent").progressbar("value", progress);
+            }
+        }, false);
+
+        xhr.open('POST', '/projectcontent/UploadImageProcessContent');
+        xhr.send(formdata);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                //$('#imageShowContent').append("<img src=\"" + xhr.responseText + "\" width=200 height=126>");
+                $('#imageShowContent').append(xhr.responseText);
+                hideLoadingImage();
+            }
+        }
+        return false;
+    }
+    $("#progressbarContent").progressbar({
+        max: 100,
+        change: function (evt, ui) {
+            $("#progresslabelContent").text($("#progressbarContent").progressbar("value") + "%");
+        },
+        complete: function (evt, ui) {
+            $("#progresslabelContent").text("File upload successful!");
+        }
+    });
+    //alert("");
+    //evt.preventDefault();
+    
+    function checkField() {
+        
+        if (document.getElementById("title").value == "") {
+            alert("Nhập tên bài viết!");
+            document.getElementById("title").focus();
+            return false;
+        }
+        if (document.getElementById("projectid").value == "") {
+            alert("Nhập dự án!");
+            document.getElementById("projectid").focus();
+            return false;
+        }
+        if (document.getElementById("itemid").value == "") {
+            alert("Nhập project menu!");
+            document.getElementById("itemid").focus();
+            return false;
+        }
+        
+        if (document.getElementById("fullcontent").value == "") {
+            alert("Nhập nội dung!");
+            document.getElementById("fullcontent").focus();
+            return false;
+        }
+        
+        document.getElementById("EditForm").submit();
+    }
+    
+    function getListProject(value) {
+        //alert(value);
+        //var formdata = new FormData(); //FormData object
+        //formdata.append("keyword", keyword);
+        //formdata.append("location", location);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/projectitem/getListProject');
+        xhr.send();
+        var content = "";
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var news = '{"news":' + xhr.responseText + '}';
+                var json_parsed = $.parseJSON(news);
+
+                //alert(news);
+                $("#projectid").html("<option selected=\"selected\" disabled=\"disabled\">Chọn</option>");
+                //$("#dis").append("<option value='" + json_parsed.news[0].provin + "' >" + json_parsed.news[0].provin + "</option>");
+                for (var i = 0; i < json_parsed.news.length; i++) {
+                    if (json_parsed.news[i]) {
+                        $("#projectid").append("<option value='" + json_parsed.news[i].id + "'>" + json_parsed.news[i].name + "</option>");
+
+                    }
+                }
+                $("#projectid").val(value);
+                //alert(news);
+            }
+        }
+    }
+    //alert("");
+    getListProject("");
+    //alert("");
+    function getListProjectItem(projectid) {
+        //var formdata = new FormData(); //FormData object
+        //formdata.append("keyword", keyword);
+        //formdata.append("location", location);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/projectitem/getListProjectItem?projectid=' + projectid);
+        xhr.send();
+        var content = "";
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var news = '{"news":' + xhr.responseText + '}';
+                var json_parsed = $.parseJSON(news);
+
+                //alert(news);
+                $("#itemid").html("<option selected=\"selected\" disabled=\"disabled\">Chọn</option>");
+                //$("#dis").append("<option value='" + json_parsed.news[0].provin + "' >" + json_parsed.news[0].provin + "</option>");
+                for (var i = 0; i < json_parsed.news.length; i++) {
+                    if (json_parsed.news[i]) {
+                        $("#itemid").append("<option value='" + json_parsed.news[i].id + "'>" + json_parsed.news[i].itemname + "</option>");
+
+                    }
+                }
+                $("#itemid").val(value);
+                //alert(news);
+            }
+        }
+    }
+    evt.preventDefault();
+</script>

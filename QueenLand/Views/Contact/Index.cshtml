@@ -1,0 +1,22 @@
+﻿@model IEnumerable<QueenLand.Models.contact>
+@{
+    ViewBag.Title = "Sửa liên hệ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Liên hệ</h2>
+@Html.ActionLink("Sửa", "Edit", new { id=0 })
+<table width="100%">
+   
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.Raw(@item.fullcontent)
+        </td>
+        <td>
+        </td>
+    </tr>
+}
+
+</table>

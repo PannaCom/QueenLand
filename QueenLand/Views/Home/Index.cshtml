@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "Bất động sản QueenLand";
+    
+}
+
+<!-- Revolution Slider -->
+<section class="revolution-slider">
+  <div class="bannercontainer">
+    <div class="banner">
+      <ul>
+        @Html.Raw(@ViewBag.slide)
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- Reservation form -->
+<section id="reservation-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">           
+            @Html.Raw(@ViewBag.projects)
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rooms -->
+<section class="rooms mt100">
+  <div class="container">
+    <div class="row room-list fadeIn appear"> 
+            @Html.Raw(@ViewBag.news)
+      </div>
+  </div>
+</section>

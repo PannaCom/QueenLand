@@ -1,0 +1,83 @@
+﻿@model QueenLand.Models.projectitem
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thêm mới</h2>
+
+@using (Html.BeginForm("Edit", "projectitem", FormMethod.Post, new { id = "EditForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Tên item của project(ví dụ: mặt bằng, tính năng)</label>
+                <input name="itemname" type="text" id="itemname" value="@Model.itemname" class="form-control" placeholder="Gõ tên"/>
+                @Html.ValidationMessageFor(model => model.itemname)
+              </div>
+         </div>
+         <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Thuộc dự án</label>                
+                <select class="form-control" name="projectid" id="projectid">
+                </select>
+              </div>
+         </div>
+        <p>
+            <button type="button" class="btn btn-info" onclick="checkField();">Sửa</button>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+
+    function checkField() {
+        if (document.getElementById("itemname").value == "") {
+            alert("Nhập tên item của project!");
+            document.getElementById("itemname").focus();
+            return false;
+        }
+        if (document.getElementById("projectid").value == "") {
+            alert("Nhập tên dự án!");
+            document.getElementById("projectid").focus();
+            return false;
+        }
+        document.getElementById("EditForm").submit();
+    }
+    getListProject(@Model.projectid);
+    function getListProject(value) {
+        //var formdata = new FormData(); //FormData object
+        //formdata.append("keyword", keyword);
+        //formdata.append("location", location);
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/projectitem/getListProject');
+        xhr.send();
+        var content = "";
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var news = '{"news":' + xhr.responseText + '}';
+                var json_parsed = $.parseJSON(news);
+
+                //alert(news);
+                $("#projectid").html("<option selected=\"selected\" >Chọn</option>");
+                //$("#dis").append("<option value='" + json_parsed.news[0].provin + "' >" + json_parsed.news[0].provin + "</option>");
+                for (var i = 0; i < json_parsed.news.length; i++) {
+                    if (json_parsed.news[i]) {
+                        $("#projectid").append("<option value='" + json_parsed.news[i].id + "'>" + json_parsed.news[i].name + "</option>");
+
+                    }
+                }
+                $("#projectid").val(value);
+                //alert(news);
+            }
+        }
+    }
+</script>

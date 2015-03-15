@@ -1,0 +1,37 @@
+﻿@model QueenLand.Models.slide
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>slide</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.slogan)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.slogan)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.image)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.image)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.no)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.no)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

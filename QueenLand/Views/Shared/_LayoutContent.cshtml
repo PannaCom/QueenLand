@@ -1,0 +1,151 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>@ViewBag.title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="@Html.Raw(@ViewBag.des)">                        
+        <meta name="robots" content="index,follow,noodp"/>
+        <meta name="author" content="elitehotel.com.vn"/>
+        <meta property="og:locale" content="vi_VN" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="@ViewBag.url" />        
+        <meta property="og:title" content="Đặt phòng khách sạn @ViewBag.title" />
+        <meta property="og:description" content="@ViewBag.des" />
+        <meta property="og:image" itemprop="thumbnailUrl" content="@ViewBag.image" />
+<link rel="shortcut icon" href="favicon.ico">
+<!-- Stylesheets -->
+<link rel="stylesheet" href="~/Content/css/animate.css">
+<link rel="stylesheet" href="~/Content/css/bootstrap.css">
+<link rel="stylesheet" href="~/Content/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/Content/css/owl.carousel.css">
+<link rel="stylesheet" href="~/Content/css/owl.theme.css">
+<link rel="stylesheet" href="~/Content/css/prettyPhoto.css">
+<link rel="stylesheet" href="~/Content/css/smoothness/jquery-ui-1.10.4.custom.min.css">
+<link rel="stylesheet" href="~/Content/rs-plugin/css/settings.css">
+<link rel="stylesheet" href="~/Content/css/theme.css">
+<link rel="stylesheet" href="~/Content/css/colors/turquoise.css">
+<link rel="stylesheet" href="~/Content/css/responsive.css">
+<link rel="stylesheet" href="~/Content/css/customscreen.css">
+<link rel="stylesheet" href="~/Content/stylesmenu.css">
+<!-- Javascripts --> 
+<script type="text/javascript" src="~/Content/js/jquery-1.11.0.min.js"></script> 
+<script type="text/javascript" src="~/Content/js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="~/Content/js/bootstrap-hover-dropdown.min.js"></script> 
+<script type="text/javascript" src="~/Content/js/owl.carousel.min.js"></script> 
+<script type="text/javascript" src="~/Content/js/jquery.parallax-1.1.3.js"></script>
+<script type="text/javascript" src="~/Content/js/jquery.nicescroll.js"></script>  
+<script type="text/javascript" src="~/Content/js/jquery.prettyPhoto.js"></script> 
+<script type="text/javascript" src="~/Content/js/jquery-ui-1.10.4.custom.min.js"></script> 
+<script type="text/javascript" src="~/Content/js/jquery.jigowatt.js"></script> 
+<script type="text/javascript" src="~/Content/js/jquery.sticky.js"></script> 
+<script type="text/javascript" src="~/Content/js/waypoints.min.js"></script> 
+<script type="text/javascript" src="~/Content/js/jquery.isotope.min.js"></script> 
+<script type="text/javascript" src="~/Content/js/jquery.gmap.min.js"></script> 
+<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
+<script type="text/javascript" src="~/Content/rs-plugin/js/jquery.themepunch.tools.min.js"></script> 
+<script type="text/javascript" src="~/Content/rs-plugin/js/jquery.themepunch.revolution.min.js"></script> 
+<script type="text/javascript" src="~/Content/js/custom.js"></script> 
+<script type="text/javascript" src="~/Scripts/core.js"></script>
+<script src="/Scripts/jquery-ui.js"></script>
+<link rel="stylesheet" href="/Scripts/jquery-ui.css">   
+    
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+    <body>
+          <!-- Top header -->
+<div id="top-header">
+  <div class="container">
+      <div class="col-xs-6">
+        <div class="th-text pull-left">
+          	   <div class="navbar-header" style="height:67px;">
+                    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a href="/Home/" class="navbar-brand">         
+                    <!-- Logo -->
+                    <div id="logo"> <img id="default-logo" src="/Images/logo.jpg" alt="EliteHotel" style="height:76px;"></div>
+                    </a>
+          	   </div>
+        </div>		
+      </div>	  
+      <div class="col-xs-3">
+        <div class="th-text">
+          <div class="th-item" style="margin-top:9px">
+            @Html.Raw(@QueenLand.Config.getHotLine())
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <div class="th-text divCompanyHotLine" id="divCompanyHotLine" >
+          	   <span style="font-size:14px;color:#2D2B76;font-weight:bold;"><img src="/Images/home.png" width="32" height="32">&nbsp;@Html.Raw(@QueenLand.Config.getAddressCompany())</span>
+        </div>		
+      </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header>
+  <!-- Navigation -->
+  <div class="navbar yamm navbar-default" id="sticky" style="background-color:#2D2B76;height:50px;">
+    <div class="container">     
+      <div class="navbar-header">
+        <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a href="/Home/" class="navbar-brand2" >   
+            <div id="logo2"><img id="retina-logo" src="/Images/logomobile.jpg" alt="EliteHotel" style="height:47px;"></div>
+        </a>
+       </div>
+      <div id="navbar-collapse-grid" class="navbar-collapse collapse" style="height:50px;">
+        <ul class="nav navbar-nav" >
+          <li class="dropdown active" ><a href="/Home/" style="width:95px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">Trang chủ</a></li>
+          <li class="wauto"><a href="/Home/About" style="width:115px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">Về QueenLand</a></li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated"  style="width:145px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">Dự án phân phối<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              @Html.Raw(QueenLand.Config.getListProjectMenu())
+            </ul>
+          </li> 
+		  
+          <li><a href="/news/list"  style="width:125px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">Tin tức sự kiện</a></li>
+		  <li><a href="/jobs/list" style="width:115px;display:block;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">Tuyển dụng</a></li>
+          <li><a href="/Home/Contact" style="width:115px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">Liên hệ</a></li> 
+            
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+        <div id="body">
+            @RenderSection("featured", required: false)
+               @RenderBody()
+        </div>
+        <!-- Footer -->
+<footer style="margin-top:25px;">
+ 
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6" style="color:#ffffff;"> &copy; 2015 QueenLand All Rights Reserved </div>
+        <div class="col-xs-6 text-right">
+          <div class="th-text">
+              <div class="th-item">
+                <div class="social-icons"> <a href="#" style='color:#97C2EB'><i class="fa fa-facebook"></i></a> <a href="#" style='color:#97C2EB'><i class="fa fa-twitter"></i></a> <a href="#" style='color:#97C2EB'><i class="fa fa-youtube-play"></i></a> </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Go-top Button -->
+<div id="go-top"><i class="fa fa-angle-up fa-2x"></i></div>
+
+        
+     
+    </body>
+</html>

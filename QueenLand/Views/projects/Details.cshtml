@@ -1,0 +1,26 @@
+﻿@{
+    //ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutContent.cshtml";
+}
+
+<div class="container">
+  <div class="row" > 
+    <!-- Blog -->
+    <section class="blog mt50" style="margin-top:5px;">
+      <div class="col-md-3">
+        <!-- Widget: Categories -->
+        <div class="widget">
+          <h3>DỰ ÁN MỚI</h3>
+          @Html.Raw(ViewBag.menuleft)
+        </div>
+      </div>
+    </section>
+    <!-- Aside -->
+    <aside class="mt50" style="margin-top:5px;"> 
+      <!-- Widget: Text -->
+      <div class="col-md-9">
+          @Html.Raw(ViewBag.content)
+      </div>
+    </aside>
+  </div>
+</div>

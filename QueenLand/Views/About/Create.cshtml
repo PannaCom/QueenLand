@@ -1,0 +1,49 @@
+﻿@model QueenLand.Models.about
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Nội dung giới thiệu</h2>
+
+<script src="/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm("Create", "About", FormMethod.Post, new { id = "EditForm" })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Nội dung</label>                
+                 <textarea name="fullcontent" id="fullcontent" rows="20" cols="80">
+                     Gõ nội dung ở đây
+                </textarea>
+                <script>
+                    CKEDITOR.replace('fullcontent');
+                </script>                       
+              </div>
+        </div>
+                      
+    </fieldset>
+}
+<p>
+    <button type="button" class="btn btn-info" onclick="checkField();">Thêm mới</button>
+</p>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div id="loadingImage" name="loadingImage" style="z-index:1000;position:fixed;left:40%;top:30%;width:32px;height:32px;display:none;">
+    <img src="/Images/loading.gif">
+</div>
+<script>
+
+    function checkField() {
+        if (document.getElementById("fullcontent").value == "") {
+            alert("Nhập nội dung!");
+            document.getElementById("fullcontent").focus();
+            return false;
+        }
+        document.getElementById("EditForm").submit();
+    }
+
+</script>

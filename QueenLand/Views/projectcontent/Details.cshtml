@@ -1,0 +1,13 @@
+﻿@model QueenLand.Models.projectcontent
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết bài viết</h2>
+@Html.Raw(@Model.fullcontent)
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

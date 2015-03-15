@@ -1,0 +1,347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="queenlandModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="queenlandModelStoreContainer">
+          <EntitySet Name="about" EntityType="queenlandModel.Store.about" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="address" EntityType="queenlandModel.Store.address" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="contact" EntityType="queenlandModel.Store.contact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="jobs" EntityType="queenlandModel.Store.jobs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="news" EntityType="queenlandModel.Store.news" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="projectcontents" EntityType="queenlandModel.Store.projectcontents" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="projectitems" EntityType="queenlandModel.Store.projectitems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="projects" EntityType="queenlandModel.Store.projects" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="slide" EntityType="queenlandModel.Store.slide" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="users" EntityType="queenlandModel.Store.users" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="about">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="fullcontent" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="hotline" Type="ntext" />
+          <Property Name="addresscontent" Type="ntext" />
+          <Property Name="addressmap" Type="nvarchar" MaxLength="550" />
+          <Property Name="lon" Type="float" />
+          <Property Name="lat" Type="float" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="fullcontent" Type="ntext" />
+        </EntityType>
+        <EntityType Name="jobs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="nvarchar" MaxLength="450" />
+          <Property Name="image" Type="nvarchar" MaxLength="150" />
+          <Property Name="des" Type="ntext" />
+          <Property Name="fullcontent" Type="ntext" />
+          <Property Name="datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="nvarchar" MaxLength="250" />
+          <Property Name="image" Type="nvarchar" MaxLength="150" />
+          <Property Name="des" Type="ntext" />
+          <Property Name="fullcontent" Type="ntext" />
+          <Property Name="datetime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="projectcontents">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="projectid" Type="int" />
+          <Property Name="itemid" Type="int" />
+          <Property Name="title" Type="nvarchar" MaxLength="150" />
+          <Property Name="des" Type="ntext" />
+          <Property Name="fullcontent" Type="ntext" />
+        </EntityType>
+        <EntityType Name="projectitems">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="projectid" Type="int" />
+          <Property Name="itemname" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="projects">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" MaxLength="250" />
+          <Property Name="image" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="slide">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="slogan" Type="nvarchar" MaxLength="150" />
+          <Property Name="image" Type="nvarchar" MaxLength="150" />
+          <Property Name="no" Type="int" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="pass" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="queenlandModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="queenlandEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="projectitems" EntityType="queenlandModel.projectitem" />
+          <EntitySet Name="projects" EntityType="queenlandModel.project" />
+          <EntitySet Name="slides" EntityType="queenlandModel.slide" />
+          <EntitySet Name="users" EntityType="queenlandModel.user" />
+          <EntitySet Name="abouts" EntityType="queenlandModel.about" />
+          <EntitySet Name="contacts" EntityType="queenlandModel.contact" />
+          <EntitySet Name="news" EntityType="queenlandModel.news" />
+          <EntitySet Name="projectcontents" EntityType="queenlandModel.projectcontent" />
+          <EntitySet Name="jobs" EntityType="queenlandModel.job" />
+          <EntitySet Name="addresses" EntityType="queenlandModel.address" />
+          </EntityContainer>
+        <EntityType Name="projectitem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="projectid" Type="Int32" />
+          <Property Name="itemname" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="project">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="image" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="slide">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="slogan" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="image" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="no" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="pass" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="about">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="fullcontent" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="fullcontent" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="news">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="title" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="image" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="des" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fullcontent" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="datetime" Precision="3" />
+        </EntityType>
+        <EntityType Name="projectcontent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="projectid" />
+          <Property Type="Int32" Name="itemid" />
+          <Property Type="String" Name="title" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="des" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fullcontent" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="job">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="title" MaxLength="450" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="image" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="des" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="fullcontent" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="datetime" Precision="3" />
+        </EntityType>
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="hotline" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="addresscontent" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="addressmap" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="lon" />
+          <Property Type="Double" Name="lat" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="queenlandModelStoreContainer" CdmEntityContainer="queenlandEntities">
+          <EntitySetMapping Name="projectitems">
+            <EntityTypeMapping TypeName="queenlandModel.projectitem">
+              <MappingFragment StoreEntitySet="projectitems">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="projectid" ColumnName="projectid" />
+                <ScalarProperty Name="itemname" ColumnName="itemname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projects">
+            <EntityTypeMapping TypeName="queenlandModel.project">
+              <MappingFragment StoreEntitySet="projects">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slides">
+            <EntityTypeMapping TypeName="queenlandModel.slide">
+              <MappingFragment StoreEntitySet="slide">
+                <ScalarProperty Name="no" ColumnName="no" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="slogan" ColumnName="slogan" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="queenlandModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="abouts">
+            <EntityTypeMapping TypeName="queenlandModel.about">
+              <MappingFragment StoreEntitySet="about">
+                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contacts">
+            <EntityTypeMapping TypeName="queenlandModel.contact">
+              <MappingFragment StoreEntitySet="contact">
+                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="news">
+            <EntityTypeMapping TypeName="queenlandModel.news">
+              <MappingFragment StoreEntitySet="news">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
+                <ScalarProperty Name="des" ColumnName="des" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="projectcontents">
+            <EntityTypeMapping TypeName="queenlandModel.projectcontent">
+              <MappingFragment StoreEntitySet="projectcontents">
+                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
+                <ScalarProperty Name="des" ColumnName="des" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="itemid" ColumnName="itemid" />
+                <ScalarProperty Name="projectid" ColumnName="projectid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="jobs">
+            <EntityTypeMapping TypeName="queenlandModel.job">
+              <MappingFragment StoreEntitySet="jobs">
+                <ScalarProperty Name="datetime" ColumnName="datetime" />
+                <ScalarProperty Name="fullcontent" ColumnName="fullcontent" />
+                <ScalarProperty Name="des" ColumnName="des" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="addresses">
+            <EntityTypeMapping TypeName="queenlandModel.address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="lat" ColumnName="lat" />
+                <ScalarProperty Name="lon" ColumnName="lon" />
+                <ScalarProperty Name="addressmap" ColumnName="addressmap" />
+                <ScalarProperty Name="addresscontent" ColumnName="addresscontent" />
+                <ScalarProperty Name="hotline" ColumnName="hotline" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

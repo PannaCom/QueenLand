@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a22d2607cd3446dcbaaf8e5a385fcc63" Name="Diagram1">
+        <EntityTypeShape EntityType="queenlandModel.projectitem" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="queenlandModel.project" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="queenlandModel.slide" Width="1.5" PointX="12.125" PointY="28.375" />
+        <EntityTypeShape EntityType="queenlandModel.user" Width="1.5" PointX="9.50487541477423" PointY="5.9286701110790814" />
+        <EntityTypeShape EntityType="queenlandModel.about" Width="1.5" PointX="11.706166511264708" PointY="11.451349740592461" />
+        <EntityTypeShape EntityType="queenlandModel.contact" Width="1.5" PointX="5.794174033121287" PointY="2.0970753590097071" />
+        <EntityTypeShape EntityType="queenlandModel.news" Width="1.5" PointX="6.8690042360075765" PointY="19.147562155103106" />
+        <EntityTypeShape EntityType="queenlandModel.projectcontent" Width="1.5" PointX="5.77559431538712" PointY="21.163640866597948" />
+        <EntityTypeShape EntityType="queenlandModel.job" Width="1.5" PointX="11.522327665017139" PointY="19.40986020276782" />
+        <EntityTypeShape EntityType="queenlandModel.address" Width="1.5" PointX="11.389007532684602" PointY="28.143977640263724" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,111 @@
+﻿@model QueenLand.Models.project
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Thêm mới dự án</h2>
+
+@using (Html.BeginForm("Create", "projects", FormMethod.Post, new { id = "EditForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Tên dự án</label>
+                <input name="name" type="text" id="name" value="" class="form-control" style="width:60%;" placeholder="Gõ tên dự án "/>
+                @Html.ValidationMessageFor(model => model.name)
+        </div>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Upload ảnh đại diện</label>
+                <input name="imageFile" type="file" id="imageFile" value="" multiple="multiple" class="form-control" runat="server" onchange="uploadProcess();"/>                                
+                <div id="progressbar" class="progressbar">
+                    <div id="progresslabel" class="progressbarlabel"></div>
+                 </div>  
+              </div>
+         </div> 
+         <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Ảnh</label>
+                <input name="image" type="hidden" id="image" value="" class="form-control" />                  
+                  <div id="imageShow" style="width:600px;height:200px;"></div>
+              </div>
+         </div>
+        <p>
+            <input type="button" class="btn btn-info" onclick="checkField();" value="Thêm" />
+        </p>
+    </fieldset>
+}
+<div id="loadingImage" name="loadingImage" style="z-index:1000;position:fixed;left:40%;top:30%;width:32px;height:32px;display:none;">
+    <img src="/Images/loading.gif">
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+
+    //Image upload
+    function uploadProcess() {
+        var filename = document.getElementById("name").value;
+        if (filename == "") {
+            alert("Nhập tên dự án trước");
+            return;
+        }
+        var formdata = new FormData(); //FormData object
+        var fileInput = document.getElementById('imageFile');
+        for (i = 0; i < fileInput.files.length; i++) {
+            //Appending each file to FormData object
+            formdata.append(fileInput.files[i].name, fileInput.files[i]);
+            break;
+        }
+        filename = unicodeToNoMark(filename);
+        formdata.append("filename", filename);
+        showLoadingImage();
+        var xhr = new XMLHttpRequest();
+        xhr.upload.addEventListener("progress", function (evt) {
+            if (evt.lengthComputable) {
+                var progress = Math.round(evt.loaded * 100 / evt.total);
+                $("#progressbar").progressbar("value", progress);
+            }
+        }, false);
+        xhr.open('POST', '/projects/UploadImageProcess');
+        xhr.send(formdata);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                $('#imageShow').html("<img src=\"" + xhr.responseText + "\" width=600 height=200>");
+                $('#image').val(xhr.responseText);
+                hideLoadingImage();
+            }
+        }
+        return false;
+    }
+   
+    $("#progressbar").progressbar({
+        max: 100,
+        change: function (evt, ui) {
+            $("#progresslabel").text($("#progressbar").progressbar("value") + "%");
+        },
+        complete: function (evt, ui) {
+            $("#progresslabel").text("File upload successful!");
+        }
+    });
+  
+    evt.preventDefault();
+    function checkField() {
+        if (document.getElementById("name").value == "") {
+            alert("Nhập tên dự án!");
+            document.getElementById("name").focus();
+            return false;
+        }
+        if (document.getElementById("image").value == "") {
+            alert("upload ảnh dự án!");
+            return false;
+        }
+        document.getElementById("EditForm").submit();
+    }
+
+</script>

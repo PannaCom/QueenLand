@@ -1,0 +1,30 @@
+﻿@model QueenLand.Models.projectitem
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>projectitem</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.projectid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.projectid)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.itemname)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.itemname)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

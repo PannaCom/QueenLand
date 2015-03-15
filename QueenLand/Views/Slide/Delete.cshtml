@@ -1,0 +1,16 @@
+﻿@model QueenLand.Models.slide
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Delete</h2>
+<h3>Bạn có chắc chắn xóa slogan: @Model.slogan?</h3>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

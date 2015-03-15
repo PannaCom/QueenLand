@@ -1,0 +1,57 @@
+﻿@model PagedList.IPagedList<QueenLand.Models.job>
+@using PagedList.Mvc; 
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string link = "";
+}
+<div class="container">
+  <div class="row" > 
+    <!-- Blog -->
+    <section class="blog mt50" style="margin-top:15px;">
+      <div class="col-md-3">
+        <!-- Widget: Categories -->
+        <div class="widget">
+          <h3>DỰ ÁN MỚI</h3>
+          @Html.Raw(ViewBag.menuleft)
+        </div>
+      </div>
+    </section>
+    <!-- Aside -->
+    <aside class="mt50" style="margin-top:15px;"> 
+      <!-- Widget: Text -->
+      <div class="col-md-9">
+          @foreach (var item in Model) {
+              link = "/jobs/details/"+QueenLand.Config.unicodeToNoMark(@item.title)+"-"+@item.id;
+              <div style="margin-bottom:15px;display:block;position:relative;float:left;"> 
+                  <a href="@link" class="mask" style="display:block;position:relative;float:left;"><img src="@QueenLand.Config.domain/@item.image" alt="@item.title" class="imagenewslist" style="border:1px solid #808080"></a>
+                  <div class="row rowimagenewslist" >
+                    <div class="col-sm-11 col-xs-10 meta">
+                      <h2 style="font-size:22px;margin-top:0px;"><a href="@link">@Html.Raw(@item.title)</a></h2>
+                      <p style="color: #999;">&nbsp;Gửi ngày @item.datetime</p>
+				      <p class="intro">@Html.Raw(@item.des)</p>
+                    </div>
+                   </div> 
+              </div>
+          }
+          @if (Model.PageCount>1){
+                <div class="col-md-12">
+                <ul class="pagination clearfix">
+                        <li class="disabled"><a href="#">«</a></li>
+                        @for (int i = 1; i <= Model.PageCount; i++)
+                        {
+                            if (i != ViewBag.page){
+                               <text><li><a href="/jobs/list?page=@i">@i</a></li></text>
+                            }else{
+                               <text><li><a href="/jobs/list?page=@i" style="background-color:#8a6d3b;">@i</a></li></text>
+                            }
+                        }
+                </ul>
+                </div>
+            }
+      </div>
+    </aside>
+  </div>
+</div>
+
+

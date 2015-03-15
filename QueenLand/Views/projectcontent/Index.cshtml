@@ -1,0 +1,48 @@
+﻿@model IEnumerable<QueenLand.Models.projectcontent>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách Project Menu</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table width="100%">
+    <tr>
+        <th>
+            Thuộc dự án
+        </th>
+        <th>
+            Project Menu
+        </th>
+        <th>
+            Tiêu đề
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td id="td-@item.projectid-@item.id">
+            <script>getProjectName(@item.projectid,@item.id);</script>
+        </td>
+        <td id="item-@item.projectid-@item.itemid">
+            <script>getProjectItemName(@item.projectid,@item.itemid);</script>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.title)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |   
+            @Html.ActionLink("Details", "Details", new { id = item.id }, new { target="_blank"}) |            
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

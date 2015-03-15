@@ -1,0 +1,98 @@
+﻿@model QueenLand.Models.address
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Hotline và Địa chỉ</h2>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>        
+<script src="/Scripts/jquery.geocomplete.js"></script>  
+<div class="map_canvas" style="display:none;"></div>
+<script src="/Scripts/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm("Create", "Address", FormMethod.Post, new { id = "EditForm" })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Số HotLine</label>                
+                 <textarea name="hotline" id="hotline" rows="20" cols="20">
+                     Gõ nội dung ở đây
+                </textarea>
+                <script>
+                    CKEDITOR.replace('hotline');
+                </script>                       
+              </div>
+        </div>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Địa chỉ công ty</label>                
+                 <textarea name="addresscontent" id="addresscontent" rows="20" cols="20">
+                     Gõ nội dung ở đây
+                </textarea>
+                <script>
+                    CKEDITOR.replace('addresscontent');
+                </script>                       
+              </div>
+        </div>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Gõ địa chỉ trên Google Map<br/>(đểhiển thị bản đồ ở mục Liên hệ)</label>
+                <input name="addressmap" type="text" id="addressmap" value="" class="form-control" placeholder="Gõ địa chỉ" />                
+                <input name="lon" type="hidden" id="lon" value="" class="form-control"/>
+                <input name="lat" type="hidden" id="lat" value="" class="form-control"/>
+              </div>
+         </div>               
+    </fieldset>
+}
+<p>
+    <button type="button" class="btn btn-info" onclick="checkField();">Thêm mới</button>
+</p>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div id="loadingImage" name="loadingImage" style="z-index:1000;position:fixed;left:40%;top:30%;width:32px;height:32px;display:none;">
+    <img src="/Images/loading.gif">
+</div>
+<script>
+
+    function checkField() {
+        if (document.getElementById("hotline").value == "") {
+            alert("Nhập hotline!");
+            document.getElementById("hotline").focus();
+            return false;
+        }
+        if (document.getElementById("addresscontent").value == "") {
+            alert("Nhập địa chỉ!");
+            document.getElementById("addresscontent").focus();
+            return false;
+        }
+        if (document.getElementById("addressmap").value == "") {
+            alert("Nhập địa chỉ GoogleMap!");
+            document.getElementById("addressmap").focus();
+            return false;
+        }
+        document.getElementById("EditForm").submit();
+    }
+    $(function () {
+        var long;
+        var lat;
+        var options = {
+            map: ".map_canvas"
+        };
+        $("#addressmap").geocomplete(options)
+          .bind("geocode:result", function (event, result) {
+              $("#lon").val(result.geometry.location.lng());
+              $("#lat").val(result.geometry.location.lat());
+              //alert("long" + result.geometry.location.lng() + ", lat=" + result.geometry.location.lat());
+          })
+          .bind("geocode:error", function (event, status) {
+              $.log("ERROR: " + status);
+          })
+          .bind("geocode:multiple", function (event, results) {
+              $.log("Multiple: " + results.length + " results found");
+          });
+    });
+</script>
+
