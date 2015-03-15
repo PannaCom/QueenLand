@@ -35,7 +35,7 @@ namespace QueenLand.Controllers
             //Du an moi
             try
             {
-                var p = (from q in db.projects select q).OrderByDescending(o => o.id).Take(4);
+                var p = (from q in db.projects select q).OrderBy(o => o.no).ThenByDescending(o=>o.id).Take(4);
                 var prs = p.ToList();
                 string projects = "<div class=\"item\" style=\"width:100%;display:block;position:relative;float:left;background-color:#FFCA08;\"><table width=\"100%\" align=center><tr><td align=center>";//<table width=\"100%\"><tr>
                 for (int j = 0; j < prs.Count; j++)

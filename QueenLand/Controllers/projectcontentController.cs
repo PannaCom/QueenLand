@@ -42,12 +42,13 @@ namespace QueenLand.Controllers
                       orderby p.id
                       select new
                       {
+                          no=p.no,
                           image=p.image,
                           projectid = p.id,
                           projectname = p.name,
                           q.itemname,
                           itemid = q.id
-                      }).OrderBy(o=>o.projectid).ToList();
+                      }).OrderBy(o => o.no).ThenByDescending(o => o.projectid).ToList();
             string projectname = "";
             string imageMain = "";
             string menuleft = "";

@@ -60,7 +60,7 @@ namespace QueenLand.Controllers
             return p.itemname;
         }
         public string getListProject() { 
-            var p = (from q in db.projects select q).OrderByDescending(o => o.id).Take(100);
+            var p = (from q in db.projects select q).OrderBy(o=>o.no).ThenByDescending(o => o.id).Take(100);
             return JsonConvert.SerializeObject( p.ToList());
         }
         public string getListProjectItem(int projectid) {

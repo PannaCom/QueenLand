@@ -21,7 +21,7 @@ namespace QueenLand.Controllers
         public ActionResult Index()
         {
             if (Config.getCookie("logged") == "") return RedirectToAction("Login", "Admin");
-            return View(db.projects.ToList());
+            return View(db.projects.OrderBy(o=>o.no).ToList());
         }
 
         //
@@ -35,8 +35,8 @@ namespace QueenLand.Controllers
                       orderby p.id
                       select new
                       {
-                          image=p.image,projectid=p.id,projectname=p.name,q.itemname,itemid=q.id
-                      }).OrderBy(o=>o.projectid).ToList();
+                          no=p.no,image=p.image,projectid=p.id,projectname=p.name,q.itemname,itemid=q.id
+                      }).OrderBy(o=>o.no).ToList();
             string projectname="";
             string imageMain = "";
             string menuleft = "";

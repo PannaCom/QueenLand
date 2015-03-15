@@ -18,6 +18,9 @@
         <th>
             @Html.DisplayNameFor(model => model.image)
         </th>
+        <th>
+            Thứ tự xuất hiện
+        </th>
         <th></th>
     </tr>
 
@@ -27,7 +30,10 @@
             @Html.DisplayFor(modelItem => item.name)
         </td>
         <td>
-            <img src="@item.image" width=600 height=200>
+            <img src="@item.image" width=285 height=117>
+        </td>
+        <td>
+            @item.no
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

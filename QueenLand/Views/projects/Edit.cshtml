@@ -33,6 +33,21 @@
                   <div id="imageShow" style="width:600px;height:200px;"><img src="@Model.image" width=600 height=200></div>
               </div>
          </div>
+        <div class="col-md-6">
+              <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Thứ tự xuất hiện</label>                
+                <select class="form-control" name="no" id="no" >
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <script>document.getElementById("no").value=@Model.no;</script>
+              </div>
+        </div>
         <p>
             <input type="button" class="btn btn-info" onclick="checkField();" value="Sửa" />
         </p>

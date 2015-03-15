@@ -347,7 +347,7 @@ namespace QueenLand
         public static string getListProjectMenu() {
             try
             {
-                var p = (from q in db.projects select q).OrderBy(o => o.id).Take(20);
+                var p = (from q in db.projects select q).OrderBy(o => o.no).ThenByDescending(o=>o.id).Take(20);
                 var rs=p.ToList();
                 string menu = "";
                 for (int i = 0; i < rs.Count; i++) {
@@ -369,12 +369,13 @@ namespace QueenLand
                           orderby p.id
                           select new
                           {
+                              no=p.no,
                               image = p.image,
                               projectid = p.id,
                               projectname = p.name,
                               q.itemname,
                               itemid = q.id
-                          }).OrderBy(o => o.projectid).ToList();
+                          }).OrderBy(o => o.no).ThenByDescending(o=>o.projectid).ToList();
 
                 
                 string link = "";
