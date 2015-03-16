@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int? itemid = -1;
+    if (Model.itemid != null) { itemid = Model.itemid; }
 }
 <h2>Sửa nội dung dự án</h2>
 
@@ -217,6 +219,6 @@
             }
         }
     }
-    getListProjectItem(@Model.projectid,@Model.itemid);
+    getListProjectItem(@Model.projectid,@itemid);
     evt.preventDefault();
 </script>
