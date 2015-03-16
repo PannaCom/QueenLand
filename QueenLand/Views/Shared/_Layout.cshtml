@@ -62,8 +62,8 @@
     <body>
          <!-- Top header -->
 <div id="top-header">
-  <div class="container">
-      <div class="col-xs-6">
+  <div class="container" >
+      <div class="col-xs-4">
         <div class="th-text pull-left">
           	   <div class="navbar-header" style="height:67px;">
                     <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -77,13 +77,13 @@
       <div class="col-xs-3">
         <div class="th-text">
           <div class="th-item" style="margin-top:9px">
-            @Html.Raw(@QueenLand.Config.getHotLine())
+            <div ><a href="#" class="hotlinetext"><i class="fa fa-phone"></i><font style="margin-top:1px;" class="hotlinetext">Hotline:</font> <B style="margin-top:1px;" class="hotlinephone">0967876969</b></a> </div>
           </div>
         </div>
       </div>
-      <div class="col-xs-3">
+      <div class="col-xs-5">
         <div class="th-text divCompanyHotLine" id="divCompanyHotLine" >
-          	   <span style="font-size:14px;color:#2D2B76;font-weight:bold;"><img src="/Images/home.png" width="32" height="32">&nbsp;@Html.Raw(@QueenLand.Config.getAddressCompany())</span>
+          	   <span style="font-size:14px;color:#2D2B76;font-weight:bold;"><img src="/Images/home.png" width="32" height="32">&nbsp;Công ty CP TM & DV Bất động sản Queen Land<br>Tầng 2, Tower 1 Sàn Giao dịch Bất động sản Vinhomes, Times City<br>458 Minh Khai, Hà Nội<br></span>
         </div>		
       </div>
   </div>

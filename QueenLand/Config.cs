@@ -416,7 +416,12 @@ namespace QueenLand
             try
             {
                 var p = db.addresses.FirstOrDefault().addresscontent;
-                return p;
+                var content = "";
+                var res = p.Split('/');
+                content = res[0] + "<br>";
+                if (res.Length >= 2) content += res[1] + "<br>";
+                if (res.Length >= 3) content += res[2] + "<br>";
+                return content;
             }
             catch (Exception ex)
             {
