@@ -74,7 +74,7 @@
        <!-- Top header -->
 <div id="top-header">
   <div class="container" >
-      <div class="col-xs-4">
+      <div class="col-xs-3">
         <div class="th-text pull-left">
           	   <div class="navbar-header" style="height:67px;">
                     <button type="button" data-toggle="collapse" data-target="#navbar-collapse-grid" class="navbar-toggle"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -85,16 +85,16 @@
           	   </div>
         </div>		
       </div>	  
-      <div class="col-xs-3">
+      <div class="col-xs-3" style="display:block;position:relative;float:left;">
         <div class="th-text">
-          <div class="th-item" style="margin-top:9px">
-            <div ><a href="#" class="hotlinetext"><i class="fa fa-phone"></i><font style="margin-top:1px;" class="hotlinetext">Hotline:</font> <B style="margin-top:1px;" class="hotlinephone">0967876969</b></a> </div>
+          <div class="th-item" style="margin-top:24px">
+            <div ><a href="#" class="hotlinetext"><i class="fa fa-phone"></i><span style="margin-top:0px;font-size:16px;font-weight:bold;color:#2D2B76;">Hotline: 0967876969</span></a></div>
           </div>
         </div>
       </div>
-      <div class="col-xs-5">
-        <div class="th-text divCompanyHotLine" id="divCompanyHotLine" >
-          	   <span style="font-size:14px;color:#2D2B76;font-weight:bold;"><img src="/Images/home.png" width="32" height="32">&nbsp;Công ty CP TM & DV Bất động sản Queen Land<br>Tầng 2, Tower 1 Sàn Giao dịch Bất động sản Vinhomes, Times City<br>458 Minh Khai, Hà Nội<br></span>
+      <div class="col-xs-6" style="display:block;position:relative;float:left;">
+        <div class="th-text divCompanyHotLine" id="divCompanyHotLine" style="margin-top:19px">
+          	   <table style="margin-left:4px;"><tr><td valign="top"><img src="/Images/home.png" width="32" height="32"></td><td style="padding-left:4px;"><span style="margin: 4px 0 0 0;font-size:14px;color:#2D2B76;font-weight:bold;">CÔNG TY CP TM & DV BẤT ĐỘNG SẢN QUEEN LAND</span><br><span style="font-size:12px;color:#00002d">Tầng 2, Tower 1, Sàn Giao dịch Bất động sản Vinhomes Times City, 458 Minh Khai, Hà Nội</span></td></tr></table>
 
         </div>		
       </div>
@@ -114,17 +114,17 @@
        </div>
       <div id="navbar-collapse-grid" class="navbar-collapse collapse" style="height:50px;">
         <ul class="nav navbar-nav" >
-          <li class="dropdown active" ><a href="/Home/" style="width:105px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">TRANG CHỦ</a></li>
-          <li class="wauto"><a href="/Home/About" style="width:135px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">VỀ QUEEN LAND</a></li>
-          <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated"  style="width:155px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">DỰ ÁN PHÂN PHỐI<b class="caret"></b></a>
+          <li class="dropdown active" ><a href="/Home/" style="width:105px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#FFCA08';" onmouseout="this.style.backgroundColor='#2D2B76';">TRANG CHỦ</a></li>
+          <li class="wauto"><a href="/Home/About" style="width:135px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#FFCA08';" onmouseout="this.style.backgroundColor='#2D2B76';">VỀ QUEEN LAND</a></li>
+          <li class="dropdown"><a href="#" data-toggle="dropdown" class="dropdown-toggle js-activated"  style="width:155px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#FFCA08';" onmouseout="this.style.backgroundColor='#2D2B76';">DỰ ÁN PHÂN PHỐI<b class="caret"></b></a>
             <ul class="dropdown-menu">
               @Html.Raw(QueenLand.Config.getListProjectMenu())
             </ul>
           </li> 
 		  
-          <li><a href="/news/list"  style="width:135px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">TIN TỨC SỰ KIỆN</a></li>
-		  <li><a href="/jobs/list" style="width:125px;display:block;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">TUYỂN DỤNG</a></li>
-          <li><a href="/Home/Contact" style="width:125px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#A22EB4';" onmouseout="this.style.backgroundColor='#2D2B76';">LIÊN HỆ</a></li> 
+          <li><a href="/news/list"  style="width:135px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#FFCA08';" onmouseout="this.style.backgroundColor='#2D2B76';">TIN TỨC SỰ KIỆN</a></li>
+		  <li><a href="/jobs/list" style="width:125px;display:block;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#FFCA08';" onmouseout="this.style.backgroundColor='#2D2B76';">TUYỂN DỤNG</a></li>
+          <li><a href="/Home/Contact" style="width:125px;font-weight:bold;color:#ffffff;background-color:#2D2B76;" onmouseover="this.style.backgroundColor='#FFCA08';" onmouseout="this.style.backgroundColor='#2D2B76';">LIÊN HỆ</a></li> 
             
         </ul>
       </div>
