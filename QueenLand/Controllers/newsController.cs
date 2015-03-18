@@ -118,6 +118,7 @@ namespace QueenLand.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (news.datetime == null) news.datetime = DateTime.Now;
                 db.Entry(news).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

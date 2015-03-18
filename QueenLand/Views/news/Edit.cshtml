@@ -15,6 +15,7 @@
               <div class="form-group">
                 <label for="room" style="width:auto;display:block;">Tiêu đề bài viết</label>
                 <input name="title" type="text" id="title" value="@Model.title" class="form-control" placeholder="Gõ tiêu đề" onchange="urlSeo();"/>                
+                <input type="hidden" id="datetime" name="datetime" value="@Model.datetime">
               </div>
          </div>               
         <div class="col-md-6">
