@@ -83,6 +83,8 @@ function removeSpecialCharater(input) {
     input = input.replace("’", "");
     input = input.replace(/\"/g, "");
     input = input.replace("+", "");
+    input = input.replace("/", "");
+    input = input.replace("-", "_");
     input = input.replace("“", "");
     input = input.replace("”", "");
     //input = input.replace(",", "");
