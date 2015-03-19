@@ -24,9 +24,9 @@
           @foreach (var item in Model) {
               link = "/news/details/"+QueenLand.Config.unicodeToNoMark(@item.title)+"-"+@item.id;
               <div style="margin-bottom:15px;display:block;position:relative;float:left;"> 
-                  <a href="@link" class="mask" style="display:block;position:relative;float:left;"><img src="@QueenLand.Config.domain/@item.image" alt="@item.title" class="imagenewslist" style="border:1px solid #808080"></a>
+                  <div style="display:block;position:relative;float:left;"><a href="@link" class="mask" style="display:block;position:relative;float:left;"><img src="@QueenLand.Config.domain/@item.image" alt="@item.title" class="imagenewslist" style="border:1px solid #808080"></a></div>
                   <div class="row rowimagenewslist" >
-                    <div class="col-sm-11 col-xs-10 meta">
+                    <div class="col-sm-12 col-xs-12 meta">
                       <h2 style="font-size:22px;margin-top:0px;"><a href="@link">@Html.Raw(@item.title)</a></h2>
                       <p style="color: #999;">&nbsp;Gửi ngày @item.datetime</p>
 				      <p class="intro">@Html.Raw(@item.des)</p>
