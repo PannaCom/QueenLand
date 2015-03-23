@@ -502,6 +502,9 @@ display:none;
 .divCompanyHotLine {
     display:none;
 }
+#leftColDetail {
+  display:none;
+}
 }
 /* Smallest browser width fix
 -------------------------------------------------- */
@@ -518,6 +521,9 @@ margin-top: 0;
 .breadcrumb{
 margin: 15px 0 10px 0;
 }
+#leftColDetail {
+  display:none;
+}
 }
 @media (min-width: 0px) and (max-width: 300px) {
 body{
@@ -531,6 +537,9 @@ margin-top: -17px;
 }
 .divCompanyHotLine {
     display:none;
+}
+#leftColDetail {
+  display:none;
 }
 }
 /* High Resolution Devices 

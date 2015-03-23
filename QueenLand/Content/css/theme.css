@@ -2230,3 +2230,11 @@ border: 1px solid;
 .progressbarlabel {
     color:yellow;
 }
+.social-box {
+  display: block;
+  float: left;
+  margin: 0 0 10px;
+  padding: 0 10px;
+  width: 100%;
+  
+}

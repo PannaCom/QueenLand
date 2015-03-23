@@ -211,3 +211,15 @@ function getProjectItemName(projectid, itemid) {
         }
     }
 }
+function optimizeImageMobile() {
+    //$("img").css("height", "auto");
+    $("img").css("height", "auto");
+    $("img").css("maxWidth", "95%");
+    $("img").css("align", "center");
+    //$("table").css("border-color","white");
+    //$("table").css("border-spacing","0px");
+    //$("table").css("maxWidth","95%");
+    $("p").css("font-size", 16);
+    //$("img").css("align","center");
+    $("table").css("maxWidth", "95%");
+}

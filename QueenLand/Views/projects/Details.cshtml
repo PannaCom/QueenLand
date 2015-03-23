@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row" > 
     <!-- Blog -->
-    <section class="blog mt50" style="margin-top:5px;">
+    <section class="blog mt50" style="margin-top:5px;" id="leftColDetail2">
       <div class="col-md-3">
         <!-- Widget: Categories -->
         <div class="widget">
@@ -18,9 +18,17 @@
     <!-- Aside -->
     <aside class="mt50" style="margin-top:5px;"> 
       <!-- Widget: Text -->
-      <div class="col-md-9">
+      <div class="col-md-9">         
           @Html.Raw(ViewBag.content)
+           <div class="social-box">
+                    <div class="fb-like" data-href="@ViewBag.url" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true" style="float:left;"></div>
+                    <div class="twitter" style="float:left;position:relative;display:block;margin-left:25px;"><a href="https://twitter.com/share" class="twitter-share-button" data-lang="vn" url="@ViewBag.url"></a></div>                    
+                    <div class="g-plus" data-action="share" data-annotation="bubble" style="float:left;position:relative;display:block;"></div>
+          </div>
       </div>
     </aside>
   </div>
 </div>
+<script>
+    optimizeImageMobile();
+</script>

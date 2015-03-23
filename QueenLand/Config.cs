@@ -15,7 +15,7 @@ namespace QueenLand
     public class Config
     {
         
-        public static string domain ="http://queenland.vn";//"http://localhost:55773/";// "http://queenland.vn";
+        public static string domain ="http://queenland.vn/";//"http://localhost:55773/";// "http://queenland.vn";
         public static int PageSize =5;
         public static string HotelImagePath = "/Images/Hotels";
         public static string NewsImagePath = "/Images/News";
