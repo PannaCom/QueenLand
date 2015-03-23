@@ -213,6 +213,7 @@ function getProjectItemName(projectid, itemid) {
 }
 function optimizeImageMobile() {
     //$("img").css("height", "auto");
+    if (!detectmob()) return;
     $("img").css("height", "auto");
     $("img").css("maxWidth", "95%");
     $("img").css("align", "center");
@@ -222,4 +223,21 @@ function optimizeImageMobile() {
     $("p").css("font-size", 16);
     //$("img").css("align","center");
     $("table").css("maxWidth", "95%");
+}
+function detectmob() {
+   
+    if (navigator.userAgent.match(/Android/i)
+     || navigator.userAgent.match(/webOS/i)
+     || navigator.userAgent.match(/iPhone/i)
+     || navigator.userAgent.match(/iPad/i)
+     || navigator.userAgent.match(/iPod/i)
+     || navigator.userAgent.match(/BlackBerry/i)
+     || navigator.userAgent.match(/Windows Phone/i)
+     ) {
+        return true;
+    }
+    else {
+        return false;
+    }
+   
 }
