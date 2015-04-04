@@ -32,7 +32,7 @@
 }
 
 /* Retina Logo */
-header #logo2 #retina-logo {
+header #logo #retina-logo {
 	display: none;
 }
 
@@ -42,7 +42,7 @@ header #logo2 #retina-logo {
  @media (min-width: 992px) and (max-width: 1199px) {
 
 /* Retina Logo */
-header #logo2 #retina-logo {
+header #logo #retina-logo {
 	display: none;
 }
 /* Room thumbnails */
@@ -235,16 +235,16 @@ header #logo, .navbar.shrink #logo {
 .fullnewsdetail {
     display:none;
 }
-header #logo2 #retina-logo {
+header #logo #retina-logo {
  display: block;
 }
 body {
 	font-size: 13px;
 }
 /* Top Header */
-#top-header .pull-left, #top-header .th-text .social-icons {
+/*#top-header .pull-left, #top-header .th-text .social-icons {
 	display: none;
-}
+}*/
 #top-header .pull-right {
 	float: none !important;
 }
@@ -509,7 +509,7 @@ display:none;
 /* Smallest browser width fix
 -------------------------------------------------- */
 @media (min-width: 0px) and (max-width: 351px) {
-header #logo2 #retina-logo {
+header #logo #retina-logo {
  display: block;
 }
 .parallax-effect .content {
@@ -547,11 +547,14 @@ margin-top: -17px;
 @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi) {
 /* Logo */
  
-header #logo2{
+/*header #logo{
  float:left;
  position:absolute;
  margin-top:2px;
  margin-left:1px;
+}*/
+ header #logo #retina-logo {
+ display: block;
 }
  header #logo #default-logo {
  display: none;

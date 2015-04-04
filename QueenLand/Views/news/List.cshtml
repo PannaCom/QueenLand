@@ -18,16 +18,17 @@
       </div>
     </section>
     <!-- Aside -->
-    <aside class="mt50" style="margin-top:15px;"> 
+    <aside class="blog mt50" style="margin-top:15px;"> 
       <!-- Widget: Text -->
       <div class="col-md-9">
           @foreach (var item in Model) {
-              link = "/news/details/"+QueenLand.Config.unicodeToNoMark(@item.title)+"-"+@item.id;
+              link = QueenLand.Config.domain+"news/details/"+QueenLand.Config.unicodeToNoMark(@item.title)+"-"+@item.id;
+              
               <div style="margin-bottom:15px;display:block;position:relative;float:left;"> 
-                  <div style="display:block;position:relative;float:left;"><a href="@link" class="mask" style="display:block;position:relative;float:left;"><img src="@QueenLand.Config.domain/@item.image" alt="@item.title" class="imagenewslist" style="border:1px solid #808080"></a></div>
-                  <div class="row rowimagenewslist" >
+                  <div style="display:block;position:relative;float:left;"><a href="@link" class="mask" ><img src="@QueenLand.Config.domain/@item.image" alt="@item.title"  style="border:1px solid #808080;"></a></div>
+                  <div class="row rowimagenewslist" style="display:block;position:relative;float:right;margin-top:0px;">
                     <div class="col-sm-12 col-xs-12 meta">
-                      <h2 style="font-size:22px;margin-top:0px;"><a href="@link">@Html.Raw(@item.title)</a></h2>
+                      <a href="@link"><h2 style="font-size:22px;margin-top:0px;">@Html.Raw(@item.title)</h2></a>
                       <p style="color: #999;">&nbsp;Gửi ngày @item.datetime</p>
 				      <p class="intro">@Html.Raw(@item.des)</p>
                     </div>

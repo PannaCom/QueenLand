@@ -351,7 +351,7 @@ namespace QueenLand
                 var rs=p.ToList();
                 string menu = "";
                 for (int i = 0; i < rs.Count; i++) {
-                    menu += "<li><a href=\"" + Config.domain + "/projects/" + Config.unicodeToNoMark(rs[i].name) + "-" + rs[i].id + "\" style=\"width:235px;font-weight:bold;color:#ffffff;background-color:#2D2B76;\">" + rs[i].name.ToUpperInvariant() + "</a></li>";
+                    menu += "<li><a href=\"" + Config.domain + "projects/" + Config.unicodeToNoMark(rs[i].name) + "-" + rs[i].id + "\" style=\"width:235px;font-weight:bold;color:#ffffff;background-color:#2D2B76;\">" + rs[i].name.ToUpperInvariant() + "</a></li>";
                 }
                 return menu;
             }
