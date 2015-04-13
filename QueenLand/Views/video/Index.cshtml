@@ -1,0 +1,36 @@
+﻿@model IEnumerable<QueenLand.Models.video>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách video</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table width="100%">
+    <tr>
+        <th>
+            video
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+             <iframe src="@item.linktube"
+   width="560" height="315" frameborder="0" allowfullscreen></iframe>
+  
+        </td>        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

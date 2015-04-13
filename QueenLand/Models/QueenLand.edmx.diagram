@@ -15,6 +15,9 @@
         <EntityTypeShape EntityType="queenlandModel.job" Width="1.5" PointX="11.522327665017139" PointY="19.40986020276782" />
         <EntityTypeShape EntityType="queenlandModel.address" Width="1.5" PointX="11.389007532684602" PointY="28.143977640263724" />
         <EntityTypeShape EntityType="queenlandModel.project" Width="1.5" PointX="6.4089198775631" PointY="31.187410190323092" />
+        <EntityTypeShape EntityType="queenlandModel.homecat" Width="1.5" PointX="6.5672548276219773" PointY="5.2853819305474783" />
+        <EntityTypeShape EntityType="queenlandModel.homecatitem" Width="1.5" PointX="4.74725383554923" PointY="0.1075143069529507" />
+        <EntityTypeShape EntityType="queenlandModel.video" Width="1.5" PointX="6.7586417006136106" PointY="23.464940767486087" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -61,7 +61,7 @@ namespace QueenLand.Controllers
                     link = "/news/details/"+Config.unicodeToNoMark(prs2[j].title)+"-"+prs2[j].id;
                     ///hotel/" + Config.unicodeToNoMark(prs[j].name) + "-" + ViewBag.fromdate + "-" + ViewBag.todate + "-" + prs[j].id + "
                     news += "<div class=\"col-sm-4 single\" style=\"height:345px;\">";
-                    news +=" <div ><a href=\""+link+"\"><img src=\""+prs2[j].image+"\" alt=\""+prs2[j].title+"\" class=\"img-responsive\" /></a>";
+                    news +=" <div ><a href=\""+link+"\"><img src=\""+Config.domain+prs2[j].image+"\" alt=\""+prs2[j].title+"\" class=\"img-responsive\" /></a>";
                     news +="  <div class=\"mask\">";			
                     news +="   <div class=\"main\">";
                     news += "      <a href=\"" + link + "\"><b>" + prs2[j].title + "</b></a>";

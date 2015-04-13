@@ -35,5 +35,8 @@ namespace QueenLand.Models
         public DbSet<job> jobs { get; set; }
         public DbSet<address> addresses { get; set; }
         public DbSet<project> projects { get; set; }
+        public DbSet<homecat> homecats { get; set; }
+        public DbSet<homecatitem> homecatitems { get; set; }
+        public DbSet<video> videos { get; set; }
     }
 }

@@ -9,6 +9,8 @@
           <EntitySet Name="about" EntityType="queenlandModel.Store.about" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="address" EntityType="queenlandModel.Store.address" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="contact" EntityType="queenlandModel.Store.contact" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="homecat" EntityType="queenlandModel.Store.homecat" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="homecatitem" EntityType="queenlandModel.Store.homecatitem" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="jobs" EntityType="queenlandModel.Store.jobs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="news" EntityType="queenlandModel.Store.news" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="projectcontents" EntityType="queenlandModel.Store.projectcontents" store:Type="Tables" Schema="dbo" />
@@ -16,6 +18,7 @@
           <EntitySet Name="projects" EntityType="queenlandModel.Store.projects" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="slide" EntityType="queenlandModel.Store.slide" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="users" EntityType="queenlandModel.Store.users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="videos" EntityType="queenlandModel.Store.videos" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
         <EntityType Name="about">
           <Key>
@@ -41,6 +44,26 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="fullcontent" Type="ntext" />
+        </EntityType>
+        <EntityType Name="homecat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="homebigcat" Type="nvarchar" MaxLength="150" />
+          <Property Name="homecat" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="homecatitem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="homebigcat" Type="nvarchar" MaxLength="150" />
+          <Property Name="homecat" Type="nvarchar" MaxLength="150" />
+          <Property Name="title" Type="nvarchar" MaxLength="150" />
+          <Property Name="isimage" Type="tinyint" />
+          <Property Name="link" Type="nvarchar" MaxLength="150" />
+          <Property Name="islinkfile" Type="tinyint" />
         </EntityType>
         <EntityType Name="jobs">
           <Key>
@@ -109,6 +132,13 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" />
           <Property Name="pass" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="videos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="linktube" Type="nvarchar" MaxLength="150" />
+        </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -124,6 +154,9 @@
           <EntitySet Name="jobs" EntityType="queenlandModel.job" />
           <EntitySet Name="addresses" EntityType="queenlandModel.address" />
           <EntitySet Name="projects" EntityType="queenlandModel.project" />
+          <EntitySet Name="homecats" EntityType="queenlandModel.homecat" />
+          <EntitySet Name="homecatitems" EntityType="queenlandModel.homecatitem" />
+          <EntitySet Name="videos" EntityType="queenlandModel.video" />
           </EntityContainer>
         <EntityType Name="projectitem">
           <Key>
@@ -216,6 +249,33 @@
           <Property Type="String" Name="name" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="image" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="no" />
+        </EntityType>
+        <EntityType Name="homecat">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="homebigcat" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="homecat1" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="homecatitem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="homebigcat" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="homecat" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="title" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="isimage" />
+          <Property Type="String" Name="link" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="islinkfile" />
+        </EntityType>
+        <EntityType Name="video">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="linktube" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -321,6 +381,36 @@
                 <ScalarProperty Name="no" ColumnName="no" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="homecats">
+            <EntityTypeMapping TypeName="queenlandModel.homecat">
+              <MappingFragment StoreEntitySet="homecat">
+                <ScalarProperty Name="homecat1" ColumnName="homecat" />
+                <ScalarProperty Name="homebigcat" ColumnName="homebigcat" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="homecatitems">
+            <EntityTypeMapping TypeName="queenlandModel.homecatitem">
+              <MappingFragment StoreEntitySet="homecatitem">
+                <ScalarProperty Name="islinkfile" ColumnName="islinkfile" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="isimage" ColumnName="isimage" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="homecat" ColumnName="homecat" />
+                <ScalarProperty Name="homebigcat" ColumnName="homebigcat" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="videos">
+            <EntityTypeMapping TypeName="queenlandModel.video">
+              <MappingFragment StoreEntitySet="videos">
+                <ScalarProperty Name="linktube" ColumnName="linktube" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

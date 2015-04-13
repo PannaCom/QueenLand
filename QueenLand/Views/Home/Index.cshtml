@@ -23,12 +23,25 @@
     </div>
   </div>
 </section>
-
-<!-- Rooms -->
-<section class="rooms mt100">
-  <div class="container">
-    <div class="row room-list fadeIn appear"> 
-            @Html.Raw(@ViewBag.news)
+<div class="container">
+  <div class="row"> 
+    <!-- Blog -->
+    <section class="blog mt50">
+      <div class="col-md-9">
+         @Html.Raw(@ViewBag.news)       
       </div>
+    </section>
+    <!-- Aside -->
+    <aside class="mt50"> 
+      <!-- Widget: Text -->
+      <div class="col-md-3">
+        <div class="widget">
+          <h3>Video</h3> 
+          <iframe width="100%" height="315"
+            src="https://www.youtube.com/embed/lma8XATsYQw">
+           </iframe>           
+        </div>  
+      </div>
+    </aside>
   </div>
-</section>
+</div>

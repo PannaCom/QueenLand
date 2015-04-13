@@ -1,0 +1,44 @@
+﻿@model QueenLand.Models.video
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<h2>Sửa video youtube</h2>
+@using (Html.BeginForm("Edit", "video", FormMethod.Post, new { id = "EditForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <div class="form-group">
+                <label for="room" style="width:auto;display:block;">Đường link youtube (Xem ảnh hướng dẫn lấy link từ youtube bên dưới)</label>
+                <input name="linktube" type="text" id="linktube" value="@Model.linktube" class="form-control" style="width:60%;" placeholder="Paste link youtube"/>
+                @Html.ValidationMessageFor(model => model.linktube)
+                <h3>Xem ảnh hướng dẫn lấy link bên dưới</h3>
+                <img src="/Images/helptube.png"> 
+        </div>
+        <p>
+            <input type="button" class="btn btn-info" onclick="checkField();" value="Cập nhật" />
+        </p>
+    </fieldset>
+}
+<div id="loadingImage" name="loadingImage" style="z-index:1000;position:fixed;left:40%;top:30%;width:32px;height:32px;display:none;">
+    <img src="/Images/loading.gif">
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script>
+
+    function checkField() {
+        if (document.getElementById("linktube").value == "") {
+            alert("Nhập link youtube!");
+            document.getElementById("linktube").focus();
+            return false;
+        }
+        document.getElementById("EditForm").submit();
+    }
+
+</script>
