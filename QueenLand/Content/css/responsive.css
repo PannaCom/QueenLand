@@ -40,7 +40,13 @@ header #logo #retina-logo {
 /* Medium Devices
 -------------------------------------------------- */
  @media (min-width: 992px) and (max-width: 1199px) {
-
+#mainMenu > li > a{
+    padding-left:0px;
+    margin-left:0px;
+}
+.navbar-nav {	
+    margin-left:0px;
+}
 /* Retina Logo */
 header #logo #retina-logo {
 	display: none;
@@ -149,16 +155,24 @@ header #logo #retina-logo {
 /* Small Devices (tablets)
 -------------------------------------------------- */
 @media (min-width: 768px) and (max-width: 991px) {
+#mainMenu {
+    margin-left:0px;
+}
 /* Navbar */
 .navbar-nav > li > a {
 	padding-left: 10px;
 	padding-right: 10px;
+    margin-left:0px;
+}
+.navbar-nav {
+    margin-left:0px;
 }
 header #logo, .navbar.shrink #logo {
 	padding-right: 30px;
 }
 .navbar-nav > li:first-child {
 	padding-left: 20px;
+    margin-left:0px;
 }
 /* Reservation Form */
 #reservation-form .reservation-horizontal {
@@ -266,6 +280,7 @@ height: inherit;
 }
 .navbar-nav {
 	margin: 0 -15px;
+    margin-left:0px;
 }
 .navbar-collapse {
 }
@@ -509,9 +524,13 @@ display:none;
 /* Smallest browser width fix
 -------------------------------------------------- */
 @media (min-width: 0px) and (max-width: 351px) {
+#mainMenu {
+    margin-left:0px;
+}
 header #logo #retina-logo {
  display: block;
 }
+
 .parallax-effect .content {
 padding: 10px 0 0 0;
 }
