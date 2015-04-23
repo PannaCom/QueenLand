@@ -37,12 +37,15 @@ header #logo #retina-logo {
 }
 
 }
-/* Medium Devices
+/* Medium Devices, Ipad
 -------------------------------------------------- */
  @media (min-width: 992px) and (max-width: 1199px) {
-#mainMenu > li > a{
+.mainMenu {
     padding-left:0px;
     margin-left:0px;
+}
+.itemprojecthome {
+    width:23.8%;
 }
 .navbar-nav {	
     margin-left:0px;
@@ -152,12 +155,16 @@ header #logo #retina-logo {
      text-decoration: line-through;
 }
 }
-/* Small Devices (tablets)
+/* Small Devices (tablets) Google Nexus 7.2 ....
 -------------------------------------------------- */
 @media (min-width: 768px) and (max-width: 991px) {
-#mainMenu {
+.mainMenu {
     margin-left:0px;
 }
+.itemprojecthome {
+    width:100%;
+}
+
 /* Navbar */
 .navbar-nav > li > a {
 	padding-left: 10px;
@@ -251,6 +258,9 @@ header #logo, .navbar.shrink #logo {
 }
 header #logo #retina-logo {
  display: block;
+}
+.itemprojecthome {
+    width:100%;
 }
 body {
 	font-size: 13px;
@@ -524,8 +534,11 @@ display:none;
 /* Smallest browser width fix
 -------------------------------------------------- */
 @media (min-width: 0px) and (max-width: 351px) {
-#mainMenu {
+.mainMenu {
     margin-left:0px;
+}
+.itemprojecthome {
+    width:100%;
 }
 header #logo #retina-logo {
  display: block;

@@ -820,7 +820,7 @@ header #logo {
 }
 /* Nav Yamm3 Megamenu */
 .yamm .nav, .yamm .collapse, .yamm .dropup, .yamm .dropdown {
-	position: static;
+	position: static;    
 }
 .yamm .container {
 	position: relative;
@@ -2237,4 +2237,10 @@ border: 1px solid;
   padding: 0 10px;
   width: 100%;
   
+}
+.mainMenu {
+    margin-left:130px;
+}
+.itemprojecthome {
+    width:24%;
 }
