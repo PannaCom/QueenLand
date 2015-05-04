@@ -41,7 +41,7 @@ namespace QueenLand.Controllers
                 for (int j = 0; j < prs.Count; j++)
                 {
                     ///hotel/" + Config.unicodeToNoMark(prs[j].name) + "-" + ViewBag.fromdate + "-" + ViewBag.todate + "-" + prs[j].id + "
-                    projects += "<div style=\"display:block;position:relative;float:left;margin-top:5px;margin:auto;margin-left:5px;margin-right:5px;text-align:center;border:4px solid #ffffff;margin-bottom:1px;\" class=\"itemprojecthome\"><a href=\"" + Config.domain + "/projects/" + Config.unicodeToNoMark(prs[j].name) + "-" + prs[j].id + "\"><img src=\"" + Config.domain + "/" + prs[j].image + "\" width=\"100%\" height=\"116\" alt=\"" + prs[j].name + "\"><br><span style=\"font-weight:bold;text-align:center;font-size:14px;color:yellow;\">" + prs[j].name.Trim() + "</span></a></div>";
+                    projects += "<div class=\"itemprojecthome\"><a href=\"" + Config.domain + "/projects/" + Config.unicodeToNoMark(prs[j].name) + "-" + prs[j].id + "\"><img src=\"" + Config.domain + "/" + prs[j].image + "\" width=\"100%\" height=\"116\" alt=\"" + prs[j].name + "\"><br><span style=\"font-weight:bold;text-align:center;font-size:14px;color:yellow;\">" + prs[j].name.Trim() + "</span></a></div>";
                 }
                 //projects += "</td></tr></table></div>";//</tr></table>
                 ViewBag.projects = projects;
