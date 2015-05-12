@@ -12,7 +12,8 @@
         <meta property="og:url" content="@ViewBag.url" />        
         <meta property="og:title" content="@ViewBag.title" />
         <meta property="og:description" content="@ViewBag.des" />
-        <meta property="og:image" itemprop="thumbnailUrl" content="@ViewBag.image" />
+        <meta property="og:image" itemprop="thumbnailUrl" content="@ViewBag.image" /> 
+        <meta property="fb:admins" content="100006557590947"/>       
 <link rel="shortcut icon" href="favicon.ico">
 <!-- Stylesheets -->
 <link rel="stylesheet" href="~/Content/css/animate.css">
@@ -71,14 +72,22 @@
     </script>
 </head>
     <body>
-        <div id="fb-root"></div>
-        <script>(function (d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+        <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '1610076545904640',
+                    xfbml: true,
+                    version: 'v2.3'
+                });
+            };
+            (function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) { return; }
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
        <!-- Top header -->
 <!-- Top header -->
 <div id="top-header">
