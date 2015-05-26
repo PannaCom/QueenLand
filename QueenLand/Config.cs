@@ -428,5 +428,16 @@ namespace QueenLand
                 return "<b>Địa chỉ: tòa nhà tower 1, sàn GD BĐS Times City, 458 Minh Khai, Hà Nội</b>";
             }
         }
+        public static string getVideo() {
+            try
+            {
+                var p = (from q in db.videos select new { linktube = q.linktube }).FirstOrDefault();
+                return p.linktube;
+            }
+            catch (Exception ex)
+            {
+                return "https://www.youtube.com/embed/b88ZeLpFkvU";
+            }
+        }
     }
 }

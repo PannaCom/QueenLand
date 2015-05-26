@@ -5,18 +5,42 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using QueenLand.Models;
 namespace QueenLand.Controllers
 {
     public class AdminController : Controller
     {
         //
         // GET: /Admin/
-
+        private queenlandEntities db = new queenlandEntities();
         public ActionResult Index()
         {
             if (Config.getCookie("logged") == "") return RedirectToAction("Login", "Admin");
             return View();
+        }
+        public ActionResult BackUp()
+        {
+            if (Config.getCookie("logged") == "") return RedirectToAction("Login", "Admin");
+            return View();
+        }
+        public string backupdb()
+        {
+            try
+            {
+                var dbPath = @"D:\QueenLand\queenland.bak.rar";
+
+                using (var data = new queenlandEntities())
+                {
+                    var cmd = String.Format("BACKUP DATABASE {0} TO DISK='{1}' WITH FORMAT, MEDIANAME='queenland', MEDIADESCRIPTION='Media set for {0} database';"
+                        , "queenland", dbPath);
+                    db.Database.ExecuteSqlCommand(cmd);
+                }
+            }
+            catch (Exception ex)
+            {
+                return "0";
+            }
+            return "1";
         }
         public ActionResult CheckLogin()
         {

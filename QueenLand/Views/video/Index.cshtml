@@ -5,11 +5,8 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Danh sách video</h2>
+<h2>video</h2>
 
-<p>
-    @Html.ActionLink("Thêm mới", "Create")
-</p>
 <table width="100%">
     <tr>
         <th>
@@ -27,8 +24,8 @@
   
         </td>        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) 
+            
         </td>
     </tr>
 }
