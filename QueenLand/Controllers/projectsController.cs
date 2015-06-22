@@ -46,10 +46,12 @@ namespace QueenLand.Controllers
                 if (mn[i].projectname != preMenu) {
                     preMenu = mn[i].projectname;
                     link = "/projects/" + Config.unicodeToNoMark(mn[i].projectname) + "-" + mn[i].projectid;
-                    menuleft += "<div><a href=\"" + link + "\"><b>" + mn[i].projectname.ToUpperInvariant() + "</b></a></div>";
+                    menuleft += "<div id=dvmenuview_" + mn[i].projectid + "><a href=\"" + link + "\"><b>" + mn[i].projectname.ToUpperInvariant() + "</b></a>&nbsp;<span class=\"glyphicon glyphicon-plus\" style=\"float:right;cursor:pointer;\" id=menuview_" + mn[i].projectid + " onclick=\"viewMenuItem(" + mn[i].projectid+")\"></span></div>";
                 }
                 link = "/projects/" + Config.unicodeToNoMark(mn[i].itemname) + "/" + Config.unicodeToNoMark(mn[i].projectname) + "-" + mn[i].itemid;
-                menuleft += "<div>&nbsp;&nbsp;-<a href=\"" + link + "\">" + mn[i].itemname.ToUpperInvariant() + "</a></div>";
+                string style = "style=\"display:none;\"";
+                if (mn[i].projectid == id) style = "";
+                menuleft += "<div id=dvmenuview_" + mn[i].projectid + "_" + i + " "+style+">&nbsp;&nbsp;-<a href=\"" + link + "\">" + mn[i].itemname.ToUpperInvariant() + "</a></div>";
                 if (mn[i].projectid==id){
                     projectname=mn[i].projectname;
                     imageMain = mn[i].image;

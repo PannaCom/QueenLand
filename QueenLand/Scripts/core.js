@@ -238,6 +238,18 @@ function detectmob() {
     }
     else {
         return false;
+    }   
+}
+function viewMenuItem(projectid, itemid) {
+    //alert("ok");
+    for (var i = 0; i <= 100; i++) {
+        if (document.getElementById("dvmenuview_" + projectid + "_" + i)) {
+            //alert("ii");
+            if (document.getElementById("dvmenuview_" + projectid + "_" + i).style.display == "none") {
+                document.getElementById("dvmenuview_" + projectid + "_" + i).style.display = "block";
+            } else {
+                document.getElementById("dvmenuview_" + projectid + "_" + i).style.display = "none";
+            }
+        }
     }
-   
 }

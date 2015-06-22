@@ -36,41 +36,7 @@ namespace QueenLand.Controllers
             return View(projectcontent);
         }
         public ActionResult SinglePage(int id) {
-            //Lấy ra menu bên trái
-            var mn = (from p in db.projects
-                      join q in db.projectitems on p.id equals q.projectid
-                      orderby p.id
-                      select new
-                      {
-                          no=p.no,
-                          image=p.image,
-                          projectid = p.id,
-                          projectname = p.name,
-                          q.itemname,
-                          itemid = q.id
-                      }).OrderBy(o => o.no).ThenByDescending(o => o.projectid).ToList();
-            string projectname = "";
-            string imageMain = "";
-            string menuleft = "";
-            string link = "";
-            string preMenu = "";//Mỗi Menu có nhiều Menu item khác nhau, do vậy đọc lần lượt nếu sang Menu mới thì cập nhật item
-            for (int i = 0; i < mn.Count; i++)
-            {
-                if (mn[i].projectname != preMenu)
-                {
-                    preMenu = mn[i].projectname;
-                    link = "/projects/" + Config.unicodeToNoMark(mn[i].projectname) + "-" + mn[i].projectid;
-                    menuleft += "<div><a href=\"" + link + "\"><b>" + mn[i].projectname.ToUpperInvariant() + "</b></a></div>";
-                }
-                link = "/projects/" + Config.unicodeToNoMark(mn[i].itemname) + "/" + Config.unicodeToNoMark(mn[i].projectname) + "-" + mn[i].itemid;
-                menuleft += "<div>&nbsp;&nbsp;-<a href=\"" + link + "\">" + mn[i].itemname.ToUpperInvariant() + "</a></div>";
-                if (mn[i].itemid == id)
-                {
-                    projectname = mn[i].projectname;
-                    imageMain = mn[i].image;
-                }
-            }
-            ViewBag.menuleft = menuleft;
+            int parentProjectId = -1;
             try
             {
                 //Tìm ra item menu đầu tiên của Project ấy
@@ -79,12 +45,60 @@ namespace QueenLand.Controllers
                 var content = db.projectcontents.Where(o => o.itemid == minItemId).FirstOrDefault();
                 ViewBag.content = "<h1>" + content.title + "</h1>" + content.fullcontent;
                 ViewBag.des = content.des;
-                ViewBag.image = Config.domain + imageMain;
-                ViewBag.url = Config.domain + "projects/" + Config.unicodeToNoMark(projectname) + "-" + id;
-                ViewBag.title = projectname+" - "+content.title;
+                //Tìm ra menuitem này thuộc project nào;
+                var parentPr = db.projects.Where(o => o.id == content.projectid).FirstOrDefault();
+                ViewBag.image = Config.domain + parentPr.image;
+                ViewBag.url = Config.domain + "projects/" + Config.unicodeToNoMark(content.title) + "/" + Config.unicodeToNoMark(parentPr.name) + "-" + id;
+                ViewBag.title = parentPr.name + " - " + content.title;
+                parentProjectId = parentPr.id;
+
             }
             catch (Exception ex)
             {
+            }
+            try
+            {
+                //Lấy ra menu bên trái
+                var mn = (from p in db.projects
+                          join q in db.projectitems on p.id equals q.projectid
+                          orderby p.id
+                          select new
+                          {
+                              no = p.no,
+                              image = p.image,
+                              projectid = p.id,
+                              projectname = p.name,
+                              q.itemname,
+                              itemid = q.id
+                          }).OrderBy(o => o.no).ToList();
+                string projectname = "";
+                string imageMain = "";
+                string menuleft = "";
+                string link = "";
+                string preMenu = "";//Mỗi Menu có nhiều Menu item khác nhau, do vậy đọc lần lượt nếu sang Menu mới thì cập nhật item
+                
+                for (int i = 0; i < mn.Count; i++)
+                {
+                    //if (mn[i].itemid == id) parentProjectId = mn[i].projectid;
+                    if (mn[i].projectname != preMenu)
+                    {
+                        preMenu = mn[i].projectname;
+                        link = "/projects/" + Config.unicodeToNoMark(mn[i].projectname) + "-" + mn[i].projectid;
+                        menuleft += "<div id=dvmenuview_" + mn[i].projectid + "><a href=\"" + link + "\"><b>" + mn[i].projectname.ToUpperInvariant() + "</b></a>&nbsp;<span class=\"glyphicon glyphicon-plus\" style=\"float:right;cursor:pointer;\" id=menuview_" + mn[i].projectid + " onclick=\"viewMenuItem(" + mn[i].projectid + ")\"></span></div>";
+                    }
+                    link = "/projects/" + Config.unicodeToNoMark(mn[i].itemname) + "/" + Config.unicodeToNoMark(mn[i].projectname) + "-" + mn[i].itemid;
+                    string style = "style=\"display:none;\"";
+                    if (mn[i].projectid == parentProjectId) style = "";
+                    menuleft += "<div id=dvmenuview_" + mn[i].projectid + "_" + i + " " + style + ">&nbsp;&nbsp;-<a href=\"" + link + "\">" + mn[i].itemname.ToUpperInvariant() + "</a></div>";
+                    //if (mn[i].itemid == id)
+                    //{
+                    //    projectname = mn[i].projectname;
+                    //    imageMain = mn[i].image;
+                    //}
+                }
+                ViewBag.menuleft = menuleft;
+            }
+            catch (Exception ex2) { 
             }
             return View();
         }
