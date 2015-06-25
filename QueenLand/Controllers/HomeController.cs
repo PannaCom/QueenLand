@@ -41,7 +41,7 @@ namespace QueenLand.Controllers
                 for (int j = 0; j < prs.Count; j++)
                 {
                     ///hotel/" + Config.unicodeToNoMark(prs[j].name) + "-" + ViewBag.fromdate + "-" + ViewBag.todate + "-" + prs[j].id + "
-                    projects += "<div class=\"itemprojecthome\"><a href=\"" + Config.domain + "projects/" + Config.unicodeToNoMark(prs[j].name) + "-" + prs[j].id + "\"><img src=\"" + Config.domain + "/" + prs[j].image + "\" width=\"100%\" height=\"116\" alt=\"" + prs[j].name + "\"><br><span style=\"font-weight:bold;text-align:center;font-size:14px;color:yellow;\">" + prs[j].name.Trim() + "</span></a></div>";
+                    projects += "<div class=\"itemprojecthome\" style=\"background-color:#2D2B76;\"><a href=\"" + Config.domain + "projects/" + Config.unicodeToNoMark(prs[j].name) + "-" + prs[j].id + "\"><img src=\"" + Config.domain + "/" + prs[j].image + "\" width=\"100%\" height=\"116\" alt=\"" + prs[j].name + "\"><br><span style=\"font-weight:bold;text-align:center;font-size:14px;color:yellow;\">" + prs[j].name.Trim() + "</span></a></div>";
                 }
                 //projects += "</td></tr></table></div>";//</tr></table>
                 ViewBag.projects = projects;
@@ -60,16 +60,26 @@ namespace QueenLand.Controllers
                 {
                     link = "/news/details/"+Config.unicodeToNoMark(prs2[j].title)+"-"+prs2[j].id;
                     ///hotel/" + Config.unicodeToNoMark(prs[j].name) + "-" + ViewBag.fromdate + "-" + ViewBag.todate + "-" + prs[j].id + "
-                    news += "<div class=\"col-sm-4 single\" style=\"height:345px;\">";
-                    news +=" <div ><a href=\""+link+"\"><img src=\""+Config.domain+prs2[j].image+"\" alt=\""+prs2[j].title+"\" class=\"img-responsive\" /></a>";
-                    news +="  <div class=\"mask\">";			
-                    news +="   <div class=\"main\">";
-                    news += "      <a href=\"" + link + "\"><b>" + prs2[j].title + "</b></a>";
-                    news += "      <p>" + prs2[j].des + "</p>";
-                    news +="    </div>";
-                    news +=" </div>";
-                    news +=" </div>";
-                    news +=" </div>";
+                    //news += "<div class=\"col-sm-4 single\" style=\"height:345px;\">";
+                    //news +=" <div ><a href=\""+link+"\"><img src=\""+Config.domain+prs2[j].image+"\" alt=\""+prs2[j].title+"\" class=\"img-responsive\" /></a>";
+                    //news +="  <div class=\"mask\">";			
+                    //news +="   <div class=\"main\">";
+                    //news += "      <a href=\"" + link + "\"><b>" + prs2[j].title + "</b></a>";
+                    //news += "      <p>" + prs2[j].des + "</p>";
+                    //news +="    </div>";
+                    //news +=" </div>";
+                    //news +=" </div>";
+                    //news +=" </div>";
+                    news +="<div style=\"margin-bottom:25px;display:block;position:relative;float:left;\">"; 
+                    news +="<a href=\""+link+"\" class=\"mask\" style=\"display:block;position:relative;float:left;\"><img src=\""+Config.domain+prs2[j].image+"\" alt=\""+prs2[j].title+"\" class=\"imagenewslist\" style=\"border:1px solid #808080\"></a>";
+                    news += "<div class=\"row rowimagenewslist\">";
+                    news +="<div class=\"col-sm-11 col-xs-10 meta\">";
+                    news +="<h2 style=\"font-size:22px;margin-top:0px;\"><a href=\""+link+"\">"+ prs2[j].title+"</a></h2>";
+                    news +="<p style=\"color: #999;\">&nbsp;Gửi ngày "+prs2[j].datetime+"</p>";
+				    news +="<p class=\"intro\">"+prs2[j].des+"</p>";
+                    news +="</div>";
+                    news +="</div>";
+                    news +="</div>";
 
                 }
                 ViewBag.news = news;
