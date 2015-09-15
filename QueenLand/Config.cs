@@ -432,8 +432,12 @@ namespace QueenLand
         public static string getVideo() {
             try
             {
-                var p = (from q in db.videos select new { linktube = q.linktube }).FirstOrDefault();
-                return p.linktube;
+                var p = (from q in db.videos select new { id=q.id,linktube = q.linktube }).OrderBy(o=>o.id).ToList();
+                string allVideo = "";
+                for (int i = 0; i < p.Count; i++) { 
+                    allVideo+="<iframe width=\"100%\" height=\"315\"  src=\""+p[i].linktube+"\"></iframe>";
+                }
+                    return allVideo;
             }
             catch (Exception ex)
             {

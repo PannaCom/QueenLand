@@ -5,23 +5,15 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Xóa</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<fieldset>
-    <legend>video</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.linktube)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.linktube)
-    </div>
-</fieldset>
+<h3>Bạn có chắc chắn muốn xóa Video này</h3>
+<iframe src="@Model.linktube"
+   width="560" height="315" frameborder="0" allowfullscreen></iframe>
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
+        <input type="submit" value="Xóa" /> |
         @Html.ActionLink("Back to List", "Index")
     </p>
 }

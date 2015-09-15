@@ -2248,3 +2248,7 @@ border: 1px solid;
 .img-responsive {
     border:solid 1px #2D2B76;
 }
+p {
+    margin: 0 0 10px;
+    line-height: 180%;
+}
